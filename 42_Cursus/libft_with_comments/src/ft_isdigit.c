@@ -10,9 +10,14 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// ft_isdigit
+// Girilen karakterin numerik bir karakter olup olmadığını kontrol eder.
+// Eğer numerik bir karakter ise "1" döndürür.
+// Eğer numerik bir karakter değil ise "0" döndürür.
+
 int	ft_isdigit(int str)
 {
-	if (str >= '0' && str <= '9')
-		return (1);
-	return (0);
+	if (str >= '0' && str <= '9')			// Eğer girilen değer ASCII değerine göre "0" ile "9" arasında ise		
+		return (1);				// "1" döndür
+	return (0);					// "0" döndür
 }
