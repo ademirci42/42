@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+// ft_strlen
+// Girilen string'in karakter sayısını sayar ve döndürür.
+
 #include"libft.h"
 
 size_t	ft_strlen(const char *s)
@@ -17,7 +20,7 @@ size_t	ft_strlen(const char *s)
 	size_t	l;
 
 	l = 0;
-	while (s[l] != 0)
-		l++;
-	return (l);
+	while (s[l] != 0)		// s'nin son karakterine gelene kadar.
+		l++;			// l'yi arttır.
+	return (l);			// "l" döndür.
 }
