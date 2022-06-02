@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ademirci <ademirci@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:02:36 by ademirci          #+#    #+#             */
-/*   Updated: 2022/03/09 16:02:39 by ademirci         ###   ########.fr       */
+/*   Created: 2022/03/09 16:03:10 by ademirci          #+#    #+#             */
+/*   Updated: 2022/03/09 16:03:12 by ademirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_remove_writed_line(char *line)
 {
@@ -92,15 +92,15 @@ char	*ft_read_line(int fd, char *line)
 
 char	*get_next_line(int fd)
 {
-	static char	*line;
+	static char	*line[1000];
 	char		*write_readed_line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	line = ft_read_line(fd, line);
-	if (!line)
+	line[fd] = ft_read_line(fd, line[fd]);
+	if (!line[fd])
 		return (NULL);
-	write_readed_line = ft_write_readed_line(line);
-	line = ft_remove_writed_line(line);
+	write_readed_line = ft_write_readed_line(line[fd]);
+	line[fd] = ft_remove_writed_line(line[fd]);
 	return (write_readed_line);
 }

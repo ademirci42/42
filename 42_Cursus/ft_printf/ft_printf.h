@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ademirci <ademirci@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 15:49:11 by ademirci          #+#    #+#             */
-/*   Updated: 2022/03/17 15:49:12 by ademirci         ###   ########.fr       */
+/*   Created: 2022/03/21 15:23:38 by ademirci          #+#    #+#             */
+/*   Updated: 2022/03/21 17:15:00 by ademirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,26 @@
 
 # include <unistd.h>
 # include <stdarg.h>
-# include "libft/libft.h"
 # include <stdlib.h>
 
-int	ft_printf(const	char *type, ...);
-int	ft_type_selector(va_list arg, char type);
-int	ft_putstr(char *str);
-int	ft_pointer_adress(unsigned long int p);
-int	ft_putnbr(int number);
-int	ft_unputnbr(unsigned long number);
-int	ft_hexadecimal(unsigned int p, char *set);
+int		ft_printf(const char *key, ...);
+
+int		arg_printer(char c, va_list macro);
+
+int		ft_putstr(char *c);
+
+int		ft_putpointer(unsigned long int point);
+
+int		ft_puthex(unsigned int point, char *charset);
+
+int		ft_putnbr(int nb);
+
+int		ft_putunsigned(unsigned int nb);
+
+void	ft_bzero(void *str, size_t n);
+
+char	*ft_itoa(int n);
+
+void	*ft_memset(void *b, int c, size_t len);
 
 #endif

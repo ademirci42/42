@@ -5,55 +5,59 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ademirci <ademirci@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/17 15:40:17 by ademirci          #+#    #+#             */
-/*   Updated: 2022/03/17 15:44:42 by ademirci         ###   ########.fr       */
+/*   Created: 2022/03/21 15:23:03 by ademirci          #+#    #+#             */
+/*   Updated: 2022/03/21 15:23:06 by ademirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_type_selector(va_list arg, char type)
+int	arg_printer(char c, va_list macro)
 {
-	int	i;
+	int	erochar;
 
-	if (type == 'c')
+	if (c == 'c')
 	{
-		i = va_arg(arg, int);
-		return (write(1, &i, 1));
-	}	
-	else if (type == 's')
-		return (ft_putstr(va_arg(arg, char *)));
-	else if (type == 'p')
-		return (ft_pointer_adress(va_arg(arg, unsigned long int)));
-	else if (type == 'd' || type == 'i')
-		return (ft_putnbr(va_arg(arg, int)));
-	else if (type == 'u')
-		return (ft_unputnbr(va_arg(arg, unsigned long)));
-	else if (type == 'x')
-		return (ft_hexadecimal(va_arg(arg, unsigned int), "0123456789abcdef"));
-	else if (type == 'X')
-		return (ft_hexadecimal(va_arg(arg, unsigned int), "0123456789ABCDEF"));
-	else if (type == '%')
+		erochar = va_arg(macro, int);
+		return (write(1, &erochar, 1));
+	}
+	if (c == 's')
+		return (ft_putstr(va_arg(macro, char *)));
+	if (c == 'p')
+		return (ft_putpointer(va_arg(macro, unsigned long int)));
+	if (c == 'd' || c == 'i')
+		return (ft_putnbr(va_arg(macro, int)));
+	if (c == 'u')
+		return (ft_putunsigned(va_arg(macro, unsigned int)));
+	if (c == 'x')
+		return (ft_puthex(va_arg(macro, unsigned int), "0123456789abcdef"));
+	if (c == 'X')
+		return (ft_puthex(va_arg(macro, unsigned int), "0123456789ABCDEF"));
+	if (c == '%')
 		return (ft_putstr("%"));
 	return (0);
 }
 
-int	ft_printf(const char *type, ...)
+int	ft_printf(const char *key, ...)
 {
-	va_list	arg;
-	int		lenght;
+	va_list	macro;
 	int		i;
+	int		leng;
 
-	va_start(arg, type);
+	va_start(macro, key);
 	i = 0;
-	lenght = 0;
-	while (type[i++])
-	{	
-		if (type[i] != '%')
-			lenght += write(1, &type[i], 1);
+	leng = 0;
+	while (key[i])
+	{
+		if (key[i] == '%')
+		{
+			leng += arg_printer(key[i + 1], macro);
+			i++;
+		}
 		else
-			lenght += ft_type_selector(arg, type[++i]);
+			leng += write(1, &key[i], 1);
+		i++;
 	}
-	va_end(arg);
-	return (lenght);
+	va_end(macro);
+	return (leng);
 }

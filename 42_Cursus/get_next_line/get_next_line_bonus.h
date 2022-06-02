@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ademirci <ademirci@student.42kocaeli.com.  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 16:02:48 by ademirci          #+#    #+#             */
-/*   Updated: 2022/03/09 16:02:49 by ademirci         ###   ########.fr       */
+/*   Created: 2022/03/09 16:03:24 by ademirci          #+#    #+#             */
+/*   Updated: 2022/03/09 16:03:26 by ademirci         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 3
+#  define BUFFER_SIZE 4
 # endif
 
 # include <stdlib.h>
@@ -25,7 +25,7 @@ char	*get_next_line(int fd);
 char	*ft_read_line(int fd, char *line);
 char	*ft_write_readed_line(char *line);
 char	*ft_remove_writed_line(char *line);
-
+//UTILS
 size_t	ft_strlen(const char *s);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strjoin(char *s1, char *s2);
