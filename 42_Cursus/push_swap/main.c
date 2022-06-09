@@ -75,5 +75,7 @@ int	main(int argc, char **argv)
 		free(stacks);
 		return (0);
 	}
+	free(new);
 	push_swap(stacks);
+	ft_stkclear(&(stacks)->b);
 }
