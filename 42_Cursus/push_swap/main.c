@@ -56,9 +56,7 @@ int	main(int argc, char **argv)
 	t_data		*new;
 
 	if (argc < 2)
-	{
 		exit(1);
-	}
 	stacks = malloc(sizeof(t_stacks));
 	if (!stacks)
 		return (0);
